@@ -17,16 +17,23 @@ public:
     Extent(const std::vector<int>& dim) : dimension(dim) {}
     Extent(int nDim) : dimension(nDim) {}
     template<typename... Targs>
-    Extent(Targs... dims) {
-        dimension = {dims...};
-    }
+    Extent(Targs... dims) : dimension{dims...} {}
 
+    operator const std::vector<int>&() { return dimension; }
     std::vector<int>::iterator       begin()       { return dimension.begin(); }
     std::vector<int>::const_iterator begin() const { return dimension.begin(); }
     std::vector<int>::iterator       end()       { return dimension.end(); }
     std::vector<int>::const_iterator end() const { return dimension.end(); }
     int& operator[](int index)       { return dimension[index]; }
     int  operator[](int index) const { return dimension[index]; }
+    int nElement() const {
+        assert(!dimension.empty());
+        int prod = 1;
+        for (auto d : dimension) {
+            prod *= d;
+        }
+        return prod;
+    }
     int nDim() const { return dimension.size(); }
 
     int idstoflat(const std::vector<int>& ids) const {
