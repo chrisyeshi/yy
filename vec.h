@@ -53,7 +53,9 @@ private:
 /**
  * Shortcuts for the templated vector classes.
  */
+typedef tvec<float, 2> vec2;
 typedef tvec<float, 3> vec3;
+typedef tvec<int, 2> ivec2;
 typedef tvec<int, 3> ivec3;
 
 /**
@@ -93,6 +95,13 @@ tvec<Type, Size> operator*(
         const tvec<Type, Size>& a, const tvec<Type, Size>& b) {
     return perElementOperation(
             a, b, [](const Type& aa, const Type& bb) { return aa * bb; });
+}
+
+template <typename Type, int Size>
+tvec<Type, Size> operator+(
+        const tvec<Type, Size>& a, const tvec<Type, Size>& b) {
+    return perElementOperation(
+            a, b, [](const Type& aa, const Type& bb) { return aa + bb; });
 }
 
 } // namespace yy

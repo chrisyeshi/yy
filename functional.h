@@ -2,6 +2,7 @@
 #define __YY_FUNCTIONAL_H__
 
 #include <functional>
+#include <algorithm>
 
 namespace yy {
 namespace fp {
@@ -9,7 +10,7 @@ namespace fp {
 template <typename Type, typename Transform>
 auto map(const std::vector<Type>& input, Transform transform)
 		-> std::vector<decltype(transform(input[0]))> {
-	std::vector<Type> output(input.size());
+    std::vector<decltype(transform(input[0]))> output(input.size());
 	for (unsigned int i = 0; i < input.size(); ++i) {
 		output[i] = transform(input[i]);
 	}
