@@ -55,6 +55,7 @@ private:
  */
 typedef tvec<float, 2> vec2;
 typedef tvec<float, 3> vec3;
+typedef tvec<float, 4> vec4;
 typedef tvec<int, 2> ivec2;
 typedef tvec<int, 3> ivec3;
 
