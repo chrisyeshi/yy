@@ -1,9 +1,10 @@
 #ifndef __YY_STRING_H__
 #define __YY_STRING_H__
 
-#include <vector>
-#include <string>
 #include <cstdio>
+#include <map>
+#include <string>
+#include <vector>
 
 namespace yy {
 
@@ -24,6 +25,12 @@ template <typename Type>
 bool includes(const std::vector<Type>& list, const Type& element) {
     auto itr = std::find(list.begin(), list.end(), element);
     return itr != list.end();
+}
+
+template <typename Key, typename Value>
+bool includes(const std::map<Key, Value>& dict, const Key& key) {
+    auto itr = dict.find(key);
+    return itr != dict.end();
 }
 
 } // namespace yy
